@@ -1,0 +1,6 @@
+- if user_signed_in?
+  logged in as:
+  = current_user.name
+  = link_to "Sign out", destroy_user_session_path
+- else
+  = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
