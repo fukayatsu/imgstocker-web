@@ -1,6 +1,13 @@
-- if user_signed_in?
-  logged in as:
-  = current_user.name
-  = link_to "Sign out", destroy_user_session_path
-- else
-  = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+%p
+  1.
+  - if user_signed_in?
+    Done. You have been logged in as:
+    = current_user.name
+    = link_to "(logout)", destroy_user_session_path
+  - else
+    = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+
+%p
+  2. Tweet "@imgstocker save foo" on twitter. And your current twitter icon will be saved as "foo".
+%p
+  3. Tweet "@imgstocker set foo" on twitter. And your twitter icon("foo") will be restored.
