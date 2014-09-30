@@ -1,5 +1,10 @@
 class Api::IconsController < APIController
-  before_action :set_user, only: [:create]
+  before_action :set_user, only: [:index, :create]
+
+  def index
+    return head(:bad_request) unless @user
+    @icons = @user.icons
+  end
 
   def create
     return head(:bad_request) unless @user
