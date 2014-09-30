@@ -3,9 +3,7 @@ class APIController < ActionController::Base
   before_action :validate_api_key
 
   def validate_api_key
-    if params[:api_key] != ENV['INTERNAL_API_KEY']
-      head(:bad_requet)
-    end
+    head(:bad_requet) if params[:api_key] != ENV['INTERNAL_API_KEY']
   end
 
   def twitter_client(user)
